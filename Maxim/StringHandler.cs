@@ -18,11 +18,7 @@ internal class StringHandler{
         
         foreach (var c in _str)
         {
-            if (char.IsLetter(c) && char.IsLower(c) && allowedChars.Contains(c))
-            {
-                _str += c;
-            }
-            else
+            if (!char.IsLetter(c) || !char.IsLower(c) || !allowedChars.Contains(c))
             {
                 Console.WriteLine($"Ошибка: Символ '{c}' не является подходящим символом.");
                 invalid = true;
