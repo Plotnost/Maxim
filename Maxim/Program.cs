@@ -6,4 +6,7 @@ if (stringHandler.CheckString())
 {
     var doneString = stringHandler.Handling();
     Console.WriteLine(doneString);
+    var charCounter = new CharCouter(doneString);
+    charCounter.CountChar();
+    charCounter.GetCount();
 }    
