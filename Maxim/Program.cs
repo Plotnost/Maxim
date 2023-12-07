@@ -1,2 +1,3 @@
-﻿// See https://aka.ms/new-console-template for more information
-Console.WriteLine("Hello, World!");
+﻿var stringHandler = new StringHandler(Console.ReadLine());
+var doneString = stringHandler.Handling(); 
+Console.WriteLine(doneString);
