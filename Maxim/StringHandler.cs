@@ -1,3 +1,5 @@
+namespace Maxim;
+
 internal class StringHandler{
     private string? _str;
     private readonly int _length;
