@@ -18,10 +18,10 @@ static string SubstringSerching(string inputStr)
     }
     if (fistVowel != -1)
     {
-        return inputStr.Substring(fistVowel, lastVowel - fistVowel + 1);
+        return "Самая длинная подстрока, которая начинается и заканчивается на гласную букву: " + inputStr.Substring(fistVowel, lastVowel - fistVowel + 1);
     }
 
-    return "";
+    return "В строке нет глассных";
 }
 
 Console.WriteLine("Введите строку для обработки:");
@@ -34,6 +34,5 @@ if (stringHandler.CheckString())
     var charCounter = new CharCouter(doneString);
     charCounter.CountChar();
     charCounter.GetCount();
-    Console.WriteLine($"Самая длинная подстрока, которая начинается и заканчивается на гласную букву: " +
-                      $"{SubstringSerching(doneString)}");
+    Console.WriteLine(SubstringSerching(doneString));
 }    
