@@ -15,24 +15,25 @@ static string SubstringSerching(string inputStr)
             }
             lastVowel = i;
         }
-
-        if (fistVowel != -1)
-        {
-            return inputStr.Substring(fistVowel, lastVowel-fistVowel+1);
-        }
+    }
+    if (fistVowel != -1)
+    {
+        return inputStr.Substring(fistVowel, lastVowel - fistVowel + 1);
     }
 
     return "";
 }
 
+Console.WriteLine("Введите строку для обработки:");
 var stringHandler = new StringHandler(Console.ReadLine());
 
 if (stringHandler.CheckString())
 {
     var doneString = stringHandler.Handling();
-    Console.WriteLine(doneString);
+    Console.WriteLine($"Строка после обработки: {doneString}");
     var charCounter = new CharCouter(doneString);
     charCounter.CountChar();
     charCounter.GetCount();
-    Console.WriteLine(SubstringSerching(doneString));
+    Console.WriteLine($"Самая длинная подстрока, которая начинается и заканчивается на гласную букву: " +
+                      $"{SubstringSerching(doneString)}");
 }    
