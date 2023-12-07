@@ -25,10 +25,13 @@ internal class StringHandler{
             }
 
             _str = new string(charStr1) + new string(charStr2);
+
+            return _str;
         }
         
         var charStr = _str.ToCharArray();
         Array.Reverse(charStr);
+        _str = new string(charStr) + _str;
         return _str;                                                                           
 
     }
