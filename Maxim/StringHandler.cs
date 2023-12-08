@@ -10,9 +10,26 @@ internal class StringHandler{
         if (_str != null) _length = _str.Length;
     }
 
+    public bool CheckString()
+    {
+        if (_str == null) return false;
+        var invalid = false;
+        const string allowedChars = "abcdefghijklmnopqrstuvwxyz";
+        
+        foreach (var c in _str)
+        {
+            if (!char.IsLetter(c) || !char.IsLower(c) || !allowedChars.Contains(c))
+            {
+                Console.WriteLine($"Ошибка: Символ '{c}' не является подходящим символом.");
+                invalid = true;
+            }
+        }
+
+        return !invalid;
+    }
+    
     public string? Handling()
     {
-        if (_str == null) return null;
         if (_length % 2 == 0)
         {
             var charStr1 = new char[_length / 2];
