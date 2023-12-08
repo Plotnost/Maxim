@@ -3,7 +3,7 @@ using System.Collections.Generic;
 
 internal class CharCouter{
     private readonly string? _str;
-    Dictionary<char, int> charCount = new Dictionary<char, int>();
+    private Dictionary<char, int> _charCount = new Dictionary<char, int>();
 
     public CharCouter (string? inputStr)
     {
@@ -12,7 +12,7 @@ internal class CharCouter{
 
     public void GetCount()
     {
-        foreach (var entry in charCount)
+        foreach (var entry in _charCount)
         {
             Console.WriteLine($"Символ '{entry.Key}' встречается {entry.Value} раз(а).");
         }
@@ -22,8 +22,8 @@ internal class CharCouter{
     {
         foreach (var c in _str)
         {
-            if (charCount.ContainsKey(c)) charCount[c]++;
-            else charCount[c] = 1;
+            if (_charCount.ContainsKey(c)) _charCount[c]++;
+            else _charCount[c] = 1;
         }
     }
 
