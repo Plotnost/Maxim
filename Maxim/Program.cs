@@ -29,15 +29,19 @@ var stringHandler = new StringHandler(Console.ReadLine());
 
 if (stringHandler.CheckString())
 {
+    //Обработка строки
     var doneString = stringHandler.Handling();
     Console.WriteLine($"Строка после обработки: {doneString}");
     
+    //Счёт символов в обработанной строке
     var charCounter = new CharCouter(doneString);
     charCounter.CountChar();
     charCounter.GetCount();
     
+    //Поиск наибольшей подстроки ограниченной гласными
     Console.WriteLine(SubstringSerching(doneString));
     
+    //Сортировка строки
     Console.WriteLine("Выберете вид сортировки(1 - Quick Sort, 2 - Tree Sort): ");
     switch (Console.ReadLine())
     {
@@ -53,4 +57,8 @@ if (stringHandler.CheckString())
             Console.WriteLine("Некорректный ввод.");
             break;
     }
+    
+    //Удаление случайного символа в строке
+    var randomDel = new RandomDel(doneString);
+    Console.WriteLine(randomDel.DelRandomChar());
 }    
