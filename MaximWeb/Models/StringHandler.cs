@@ -14,11 +14,11 @@ internal class StringHandler{
         if (_str != null) _length = _str.Length;
     }
 
-    public string? CheckString()
+    public string? Handling()
     {
         if (_str == null) return "Введите строку";
         const string allowedChars = "abcdefghijklmnopqrstuvwxyz";
-        StringBuilder unvaildChars = new StringBuilder();
+        var unvaildChars = new StringBuilder();
         var valid = true;
         
         foreach (var c in _str)
@@ -35,10 +35,10 @@ internal class StringHandler{
             return $"Ошибка: Символы '{unvaildChars}' не является подходящим символом.";
         }
 
-        return this.Handling();
+        return this.Handler();
     }
-    
-    public string? Handling()
+
+    private string? Handler()
     {
         if (_length % 2 == 0)
         {

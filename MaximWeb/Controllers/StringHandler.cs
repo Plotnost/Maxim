@@ -1,23 +1,30 @@
-using Microsoft.AspNetCore.Mvc;
 using MaximWeb.Models;
+using Microsoft.AspNetCore.Mvc;
+
+namespace MaximWeb.Controllers;
 
 [ApiController]
 [Route("api/[controller]")]
 public class StringHandlerController : ControllerBase
 {
     [HttpGet]
-    public IActionResult CheckString([FromQuery] string inputStr)
+    public IActionResult StringHadle([FromQuery] string inputStr)
     {
         var stringHandler = new StringHandler(inputStr);
-        var result = stringHandler.CheckString();
+        var resultString = stringHandler.Handling();
 
-        if (result.StartsWith("Ошибка"))
+        if (resultString.StartsWith("Ошибка"))
         {
-            return BadRequest(new { Error = result });
+            return BadRequest(new { Error = resultString });
         }
-        
-        
 
-        return Ok(new { ProcessedString = result });
+        var charCoundter = new CharCouter(resultString);
+        var resultCount = charCoundter.CountChar();
+        
+        return Ok(new
+        {
+            Обработанная_Строка = resultString,
+            Количество_Символов_В_Строке = resultCount
+        });
     }
 }
