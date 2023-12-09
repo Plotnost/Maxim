@@ -20,11 +20,14 @@ public class StringHandlerController : ControllerBase
 
         var charCoundter = new CharCouter(resultString);
         var resultCount = charCoundter.CountChar();
+
+        var subString = stringHandler.SubstringSerching();
         
         return Ok(new
         {
             Обработанная_Строка = resultString,
-            Количество_Символов_В_Строке = resultCount
+            Количество_Символов_В_Строке = resultCount,
+            Самая_длинная_подстрока_которая_начинается_и_заканчивается_на_гласную_букву = subString,
         });
     }
 }

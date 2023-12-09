@@ -63,14 +63,14 @@ internal class StringHandler{
 
     }
     
-    static string SubstringSerching(string inputStr)
+    public string SubstringSerching()
     {
         string vowels = "aeiouy";
         int fistVowel = -1;
         int lastVowel = -1;
-        for (var i = 0; i < inputStr.Length; i++)
+        for (var i = 0; i < _str.Length; i++)
         {
-            if (vowels.Contains(inputStr[i]))
+            if (vowels.Contains(_str[i]))
             {
                 if (fistVowel == -1)
                 {
@@ -81,7 +81,7 @@ internal class StringHandler{
         }
         if (fistVowel != -1)
         {
-            return "Самая длинная подстрока, которая начинается и заканчивается на гласную букву: " + inputStr.Substring(fistVowel, lastVowel - fistVowel + 1);
+            return _str.Substring(fistVowel, lastVowel - fistVowel + 1);
         }
 
         return "В строке нет глассных";
