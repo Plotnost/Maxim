@@ -49,12 +49,16 @@ public class StringHandlerController : ControllerBase
                 
         }
 
+        var randomDel = new RandomDel(resultString);
+        var rendomDelStr = randomDel.DelRandomChar();
+
         return Ok(new
         {
             Обработанная_Строка = resultString,
             Количество_Символов_В_Строке = resultCount,
             Самая_длинная_подстрока_которая_начинается_и_заканчивается_на_гласную_букву = subString,
             Отсортированная_Строка = sortStr,
+            Строка_С_Удалённым_Символом = rendomDelStr
         });
     }
 }
