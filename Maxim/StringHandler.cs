@@ -1,6 +1,6 @@
 namespace Maxim;
 
-internal class StringHandler{
+public class StringHandler{
     private string? _str;
     private readonly int _length;
 
@@ -26,6 +26,30 @@ internal class StringHandler{
         }
 
         return !invalid;
+    }
+
+    public string SubstringSerching()
+    {
+        string vowels = "aeiouy";
+        int fistVowel = -1;
+        int lastVowel = -1;
+        for (var i = 0; i < _str.Length; i++)
+        {
+            if (vowels.Contains(_str[i]))
+            {
+                if (fistVowel == -1)
+                {
+                    fistVowel = i;
+                }
+                lastVowel = i;
+            }
+        }
+        if (fistVowel != -1)
+        {
+            return "Самая длинная подстрока, которая начинается и заканчивается на гласную букву: " + _str.Substring(fistVowel, lastVowel - fistVowel + 1);
+        }
+
+        return "В строке нет гласных";
     }
     
     public string? Handling()
