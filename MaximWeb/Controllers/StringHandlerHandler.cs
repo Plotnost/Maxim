@@ -1,6 +1,9 @@
 using System.Diagnostics;
+using System.Text.Json;
 using MaximWeb.Models;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.Extensions.Options;
+using Microsoft.VisualBasic;
 using static MaximWeb.Controllers.StringProcessingOption;
 
 namespace MaximWeb.Controllers;
@@ -17,7 +20,8 @@ public class StringHandlerController : ControllerBase
 {
     [HttpGet]
     public IActionResult StringHadle([FromQuery(Name = "Введите строку для сортировки")] string inputStr, 
-    [FromQuery(Name = "Выберете тип сортировки: 1 - сортировка деревом, 2 - Быстрая сортировка")] StringProcessingOption processingOption)
+    [FromQuery(Name = "Выберете тип сортировки: 1 - сортировка деревом, 2 - Быстрая сортировка")] 
+            StringProcessingOption processingOption)
     {
         var stringHandler = new StringHandler(inputStr);
         var resultString = stringHandler.Handling();
@@ -27,8 +31,8 @@ public class StringHandlerController : ControllerBase
             return BadRequest(new { Error = resultString });
         }
 
-        var charCoundter = new CharCouter(resultString);
-        var resultCount = charCoundter.CountChar();
+        var charCounter = new CharCouter(resultString);
+        var resultCount = charCounter.CountChar();
 
         var subString = stringHandler.SubstringSerching();
 
@@ -50,7 +54,7 @@ public class StringHandlerController : ControllerBase
         }
 
         var randomDel = new RandomDel(resultString);
-        var rendomDelStr = randomDel.DelRandomChar();
+        var randomDelStr = randomDel.DelRandomChar();
 
         return Ok(new
         {
@@ -58,7 +62,7 @@ public class StringHandlerController : ControllerBase
             Количество_Символов_В_Строке = resultCount,
             Самая_длинная_подстрока_которая_начинается_и_заканчивается_на_гласную_букву = subString,
             Отсортированная_Строка = sortStr,
-            Строка_С_Удалённым_Символом = rendomDelStr
+            Строка_С_Удалённым_Символом = randomDelStr,
         });
     }
 }
