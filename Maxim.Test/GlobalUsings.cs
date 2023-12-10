@@ -93,5 +93,45 @@ namespace Maxim.Test
         }
     }
     
+    [TestFixture]
+    public class TreeSortTests
+    {
+        [TestCase("abcde", ExpectedResult = "abcde")]
+        [TestCase("dcba", ExpectedResult = "abcd")]
+        [TestCase("aAaAa", ExpectedResult = "AAaaa")]
+        [TestCase("12345", ExpectedResult = "12345")]
+        public string Sort_ValidString_ReturnsSortedString(string inputStr)
+        {
+            // Arrange
+            var treeSort = new TreeSort(inputStr);
+
+            // Act
+            string sortedString = treeSort.Sort();
+
+            // Assert
+            return sortedString;
+        }
+        
+    }
     
+    [TestFixture]
+    public class QuickSortTests
+    {
+        [TestCase("abcde", ExpectedResult = "abcde")]
+        [TestCase("dcba", ExpectedResult = "abcd")]
+        [TestCase("aAaAa", ExpectedResult = "AAaaa")]
+        [TestCase("12345", ExpectedResult = "12345")]
+        public string Sort_ValidString_ReturnsSortedString(string inputStr)
+        {
+            // Arrange
+            var treeSort = new QuickSort(inputStr);
+
+            // Act
+            string sortedString = treeSort.QSort();
+
+            // Assert
+            return sortedString;
+        }
+        
+    }
 }
