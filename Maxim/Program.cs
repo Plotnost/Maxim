@@ -12,7 +12,11 @@ if (stringHandler.CheckString())
     //Счёт символов в обработанной строке
     var charCounter = new CharCouter(doneString);
     charCounter.CountChar();
-    charCounter.GetCount();
+    var countChar = charCounter.GetCount();
+    foreach (var entry in countChar)
+    {
+        Console.WriteLine($"Символ '{entry.Key}' встречается {entry.Value} раз(а).");
+    }
     
     //Поиск наибольшей подстроки ограниченной гласными
     Console.WriteLine(stringHandler.SubstringSerching());

@@ -1,7 +1,7 @@
 namespace Maxim;
 using System.Collections.Generic;
 
-internal class CharCouter{
+public class CharCouter{
     private readonly string? _str;
     private Dictionary<char, int> _charCount = new Dictionary<char, int>();
 
@@ -10,12 +10,9 @@ internal class CharCouter{
         _str = inputStr;
     }
 
-    public void GetCount()
-    {
-        foreach (var entry in _charCount)
-        {
-            Console.WriteLine($"Символ '{entry.Key}' встречается {entry.Value} раз(а).");
-        }
+    public Dictionary<char, int> GetCount()
+    { 
+        return _charCount;
     }
     
     public void CountChar()
