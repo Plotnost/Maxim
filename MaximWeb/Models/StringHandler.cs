@@ -17,6 +17,7 @@ internal class StringHandler{
     public string? Handling()
     {
         if (_str == null) return "Введите строку";
+        if (BlackLisCheck()) return "Ошибка: Строка в чёрном списке";
         const string allowedChars = "abcdefghijklmnopqrstuvwxyz";
         var unvaildChars = new StringBuilder();
         var valid = true;
@@ -36,6 +37,14 @@ internal class StringHandler{
         }
 
         return this.Handler();
+    }
+
+    private bool BlackLisCheck()
+    {
+        var config = new ConfigurationBuilder().AddJsonFile("appsettings.json").Build();
+        var blackList = config.GetSection("Settings:BlackList").GetChildren().Select(section => 
+            section.Value).ToList();
+        return blackList.Contains(_str);
     }
 
     private string? Handler()

@@ -13,9 +13,12 @@ public class RandomDel
     
     public string DelRandomChar()
     {
+        
         try
         {
-            var apiUrl = $"http://www.randomnumberapi.com/api/v1.0/random?min=0&max={_inputStr.Length - 1}&count=1";
+            var config = new ConfigurationBuilder().AddJsonFile("appsettings.json").Build();
+            var randomApi = config.GetValue<string>("RandomApi");
+            var apiUrl = randomApi.Replace("{x}", (_inputStr.Length - 1).ToString());
 
             var request = WebRequest.Create(apiUrl);
 
@@ -28,7 +31,7 @@ public class RandomDel
             var index = int.Parse(substring);
             return _inputStr.Remove(index, 1);
         }
-        catch (Exception)
+        catch (Exception ex)
         {
             var random = new Random();
             var index = random.Next(0, _inputStr.Length - 1);
