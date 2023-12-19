@@ -1,29 +1,5 @@
 ﻿using Maxim;
 
-static string SubstringSerching(string inputStr)
-{
-    string vowels = "aeiouy";
-    int fistVowel = -1;
-    int lastVowel = -1;
-    for (var i = 0; i < inputStr.Length; i++)
-    {
-        if (vowels.Contains(inputStr[i]))
-        {
-            if (fistVowel == -1)
-            {
-                fistVowel = i;
-            }
-            lastVowel = i;
-        }
-    }
-    if (fistVowel != -1)
-    {
-        return "Самая длинная подстрока, которая начинается и заканчивается на гласную букву: " + inputStr.Substring(fistVowel, lastVowel - fistVowel + 1);
-    }
-
-    return "В строке нет глассных";
-}
-
 Console.WriteLine("Введите строку для обработки:");
 var stringHandler = new StringHandler(Console.ReadLine());
 
@@ -36,10 +12,14 @@ if (stringHandler.CheckString())
     //Счёт символов в обработанной строке
     var charCounter = new CharCouter(doneString);
     charCounter.CountChar();
-    charCounter.GetCount();
+    var countChar = charCounter.GetCount();
+    foreach (var entry in countChar)
+    {
+        Console.WriteLine($"Символ '{entry.Key}' встречается {entry.Value} раз(а).");
+    }
     
     //Поиск наибольшей подстроки ограниченной гласными
-    Console.WriteLine(SubstringSerching(doneString));
+    Console.WriteLine(stringHandler.SubstringSerching());
     
     //Сортировка строки
     Console.WriteLine("Выберете вид сортировки(1 - Quick Sort, 2 - Tree Sort): ");
@@ -60,5 +40,6 @@ if (stringHandler.CheckString())
     
     //Удаление случайного символа в строке
     var randomDel = new RandomDel(doneString);
-    Console.WriteLine(randomDel.DelRandomChar());
-}    
+    string strWithoutChar = randomDel.DelRandomChar();
+    Console.WriteLine($"Строка без одного слуайного символа:{strWithoutChar}");
+}
